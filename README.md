@@ -12,6 +12,10 @@ The license, code of conduct, and security/contributing guidelines in the main r
 ```
 git clone https://github.com/Unitendo/aurorachat-server.git
 cd aurorachat-server
+
+# Install dependencies
+npm install express express-session bcryptjs jsonwebtoken
+
 node server.js
 ```
 
