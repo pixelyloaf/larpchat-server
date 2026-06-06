@@ -271,6 +271,18 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false }
 }));
+app.get('/api/rules', async (req, res) => {
+  const filePath = path.join(__dirname, 'rules.txt');
+    
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error(err);
+            if (!res.headersSent) {
+                res.status(404).send('* If you are reading this,&  I messed up somehow./%');
+            }
+        }
+    });
+});
 
 app.get('/admin/login', async (req, res) => {
   res.send(`
