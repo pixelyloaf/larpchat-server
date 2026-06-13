@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Version information (please complete the following information):**
  - OS: [e.g. 11.17.0-50U]
-- Version [e.g. v0.6.1]
+- Version [e.g. v0.6.7]
 
 **Additional context**
 Add any other context about the problem here.
