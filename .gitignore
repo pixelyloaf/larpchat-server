@@ -3,6 +3,9 @@
 .env.*
 *.env
 
+# --- Node modules ---
+node_modules/
+
 # --- Python cache ---
 **pycache**/
 *.py[cod]
