@@ -328,7 +328,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false }
 }));
-app.get('/api/rules', checkBan, async (req, res) => {
+app.get('/api/rules', async (req, res) => {
   const filePath = path.join(__dirname, 'rules.txt');
   res.sendFile(filePath, (err) => {
       if (err) {
@@ -339,7 +339,7 @@ app.get('/api/rules', checkBan, async (req, res) => {
       }
   });
 });
-app.get('/api/faq', checkBan, async (req, res) => {
+app.get('/api/faq', async (req, res) => {
   const filePath = path.join(__dirname, 'faq.txt');
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -350,7 +350,7 @@ app.get('/api/faq', checkBan, async (req, res) => {
     }
   });
 });
-app.get('/api/changelog', checkBan, async (req, res) => {
+app.get('/api/changelog', async (req, res) => {
   const filePath = path.join(__dirname, 'changelog.txt');
   res.sendFile(filePath, (err) => {
     if (err) {
@@ -362,7 +362,7 @@ app.get('/api/changelog', checkBan, async (req, res) => {
   });
 });
 
-app.post('/api/online', verifyToken, checkBan, async (req, res) => {
+app.post('/api/online', async (req, res) => {
   room = req.body;
   // get online count for room, currently placeholder
   res.status(200).send("?")
