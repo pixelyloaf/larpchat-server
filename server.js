@@ -71,14 +71,23 @@ const socket_server = net.createServer((socket) => {
 
   socket.on('data', (data) => {
     const msg = data.toString('utf-8').trim()
+    const parts = msg.split('|')
 
-    if(msg === 'history') {
+    if(parts[0] === 'history') {
+      let limit = parts[1] ? parseInt(parts[1]) : 0
+      if(limit == NaN) limit = 0
+      if(limit < 0) limit = 0
+      let message = ''
       for(const room in chatHistory) {
         const history = chatHistory[room]
         for(const msg of history) {
-          socket.write(`${msg.username}|${msg.message}|${room}|\n`)
+          message += `${msg.username}|${msg.message}|${room}|\n`
         }
       }
+      if(limit && message.length > limit) {
+        message = message.substring(message.length - limit, message.length)
+      }
+      socket.write(message)
       console.log(`${socket.remoteAddress} requested message history`)
       return
     }
