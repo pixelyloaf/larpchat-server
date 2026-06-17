@@ -21,3 +21,9 @@ A: We are currently planning to add DMs, Image & Voice Chat Support to AuroraCha
 
 Q: How do i reset my password?
 A: You can reset your password using the instructions in the #auc-password-reset channel on our discord server, but only if we are certain that you are said user.
+
+Q: What does every tier of staff do?
+A: AuroraChat Mods do general moderation of AuroraChat, while developers develop AuroraChat clients/servers. Please note that a developer may also be a mod, and vice versa.
+
+Q: Who develops what?
+A: Cool Guy develops pretty much everything (what a nerd), Virtualle develops the server, the 3DS client, and the Wii client, Funtum develops the Wii U client, Orstando develops the server and 3DS client, 3pm develops the Switch client, and Kw develops the 9x client.
