@@ -729,7 +729,8 @@ app.get('/admin/createAccount', async (req, res) => {
       <h1 style='color: green;'>Create User</h1>
       <form method="POST">
         <input name="username" placeholder="Username" required /><br>
-        <input name="password" placeholder="Password" required /><br>
+        <input name="password" placeholder="Password" /><br>
+        <input name="passwordHash" placeholder="Password Hash" /><br>
         <button type="submit">Create Account</button>
     </form>
     </body>
@@ -741,15 +742,27 @@ app.post('/admin/createAccount', async (req, res) => {
   if (!req.session.admin) {
     return res.redirect("/admin/login");
   }
-  const {username, password} = req.body;
+  const {username, password, passwordHash} = req.body;
   
+
   const users = readUsers();
   if (users.users.find(user => user.username === username)) {
     console.log("Signup: account already in use");
     return res.status(409).send("ERR_USER_USED");
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  var hashedPassword;
+  if (!passwordHash) {
+    hashedPassword = await bcrypt.hash(password, 10);
+  } else if (!password) {
+    hashedPassword = passwordHash
+  } else {
+      return res.send(`
+        <p>You need to at least include a password or a password hash.</p>
+        <a href="/admin">Go back</a>
+        `);
+  }
+  
   const newUser = { id: Date.now().toString(), username, password: hashedPassword, admin: false, ip: req.ip, banned: false, banReason: "", muted: false };
   users.users.push(newUser);
   writeUsers(users);
