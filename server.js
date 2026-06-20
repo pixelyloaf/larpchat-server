@@ -811,7 +811,7 @@ app.post('/admin/userinfo', async (req, res) => {
   const user = users.users.find(user => user.username === username);
 
   return res.send(`
-    <p>Username: ${user.username}<br>Password Hash: ${user.password}<br>ID: ${user.id}<br>Banned: ${user.banned}<br>Ban Reason: ${user.banReason || "None"}<br>Muted: ${user.muted}</p>
+    <p>Username: ${user.username}<br>Password Hash: ${user.password}<br>ID: ${user.id}<br>Banned: ${user.banned}<br>Ban Reason: ${user.banReason || "None"}<br>Muted: ${user.muted}<br>IP: ${user.ip}</p>
     <a href="/admin">Go back</a>
     `);
 });
